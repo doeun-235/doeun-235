@@ -16,11 +16,11 @@ I did simulations about the Cucker-Smale model, second-order-nonlinear ODEs desc
 I crawled datum of musics in the given playlist, from a music streaming site 'genie.com', and exported DB as xlsx file.
 
 ### [1902 NIMS report](https://github.com/neulbo-187/1902-NIMS-report)
-I made 2 progrmas. The first one is classifing iris data with decision tree and random forest. The second one is suggesting houses and positioning the houses on the map. I became more skillful at using sklearn, Pandas, and Folium through this project.
+I made 2 programs. The first one is classifing iris data with decision tree and random forest. The second one is suggesting houses and positioning the houses on the map. I became more skillful at using sklearn, Pandas, and Folium through this project.
 
 ### [School Projects](https://github.com/neulbo-187/graduate-course)
 #### [Homeworks for the lecture 'Machine Learning 3'](https://github.com/neulbo-187/graduate-course/tree/main/19-1/Machine-Learning-3)
-
+I implemented the first visit Monte-Carlo method and TD for solving the finding optimal route problem. I revised or made a code using NumPy and TensorFlow.
 
 #### [Homeworks for the lecture 'Algorithms'](https://github.com/neulbo-187/graduate-course/tree/main/20-1/Algorithms)
 
