@@ -1,4 +1,5 @@
-### Hi there 👋
+### Education
+M.S in Mathematics, 2021 (Yonsei University, Seoul) / B.S in Mathematics & Philosophy, 2018 (Yonsei University,Seoul)
 
 <!--
 **neulbo-187/neulbo-187** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
