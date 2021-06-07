@@ -18,16 +18,6 @@ I crawled datum of musics in the given playlist, from a music streaming site 'ge
 ### [1902 NIMS report](https://github.com/neulbo-187/1902-NIMS-report)
 I made 2 programs. The first one is classifing iris data with decision tree and random forest. The second one is suggesting houses and positioning the houses on the map. I became more skillful at using sklearn, Pandas, and Folium through this project. Caused to collisions happened during installing libraries, I learned setting develop environment is so important. 
 
-### [School Projects](https://github.com/neulbo-187/graduate-course)
-#### [Homeworks for the lecture 'Machine Learning 3'](https://github.com/neulbo-187/graduate-course/tree/main/19-1/Machine-Learning-3)
-I implemented the first visit Monte-Carlo method and TD for solving the finding optimal route problem. I revised or made a code using NumPy and TensorFlow. Making TensorFlow graph structure and debugging was unfamiliar but it was very interesting. 
-
-#### [Homeworks for the lecture 'Algorithms'](https://github.com/neulbo-187/graduate-course/tree/main/20-1/Algorithms)
-We learned some algorithms, e.g. greedy, divide and conquer, e.t.c. , and solved some problems using the algorithms in the spring semester of 2020. The main textbook of the course was 'Introduction to the Design & Analysis of Algorithms'written by Anany Levitin. There are codes for homework in the linked repository. Almost all of them are done with C.
-
-#### [Homeworks for the lecture 'Numerical Analysis'](https://github.com/neulbo-187/graduate-course/tree/main/20-1/Numeical-Analysis/)
-We studied numerical methods for solving algebraic and differential equations, interpolation, integration, and optimization. In a repository 'Numerical Analysis', there are codes for homework. They are the implementation of algorithms learned in the class with MATLAB.
-
 ### Teaching Experience
 I had taught 'Engineering Math' classes as TA in Yonsei Univ. for 2 years. The classes covered calculus, linear algebra, solving ODE and PDE, and complex analysis. 
 
