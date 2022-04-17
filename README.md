@@ -10,7 +10,7 @@ M.S in Mathematics, 2021 (Yonsei University, Seoul) / B.S in Mathematics & Philo
 
 ## 주요 경험
 ### [쿠커-스메일 모델과 그의 확장에 대한 시뮬레이션](https://github.com/neulbo-187/Cucker-Smale-Model)
-특정 상호작용 하의 동기화 현상을 기술하는 비선형 ODE 시스템인 쿠커-스메일 모델과 그 확장들의 수치적 해를 구하는 시뮬레이션을 진행했습니다. [석사 학위 논문](http://www.riss.kr/search/detail/DetailView.do?p_mat_type=be54d9b8bc7cdb09&control_no=c40c7fb1b28114ebffe0bdc3ef48d419)(논문에는 개명 전 이름으로 표기되어 있습니다.)에서 쿠커-스메일 모델을 확률 미분방정식으로 확장한 모델을 하나 제시하고, 에너지 관련 지표를 제시해 특정 조건에서의 해의 존재성과 수렴성을 보였습니다. 그 과정에서 또, NumPy를 이용한 수치적 시뮬레이션이 이론과 부합하는지 확인했고, matplotlib을 이용한 관련 시각화 자료들을 포함했습니다. 
+특정 상호작용 하의 동기화 현상을 기술하는 비선형 ODE 시스템인 쿠커-스메일 모델과 그 확장들의 수치적 해를 구하는 시뮬레이션을 진행했습니다. [석사 학위 논문](http://www.riss.kr/search/detail/DetailView.do?p_mat_type=be54d9b8bc7cdb09&control_no=c40c7fb1b28114ebffe0bdc3ef48d419)(개명 전 이름으로 표기되어 있습니다)에서 쿠커-스메일 모델을 확률 미분방정식으로 확장한 모델을 하나 제시하고, 에너지 관련 지표를 제시해 특정 조건에서의 해의 존재성과 수렴성을 보였습니다. 또, NumPy를 이용한 수치적 시뮬레이션이 이론과 부합하는지 확인했고, matplotlib을 이용한 관련 시각화 자료들을 포함했습니다. 
 
 이후 수렴 속도에 대한 이론적 · 수치적 추정에 대한 [후속연구 논문](https://arxiv.org/abs/2105.07353)에 참여했습니다. 특히 수치적 시뮬레이션이 이론을 잘 뒷받침하는 것을 보이는데 기여를 했고, 이 논문은 SCIE급 저널이자 SCOPUS 등재지인 ["Communications in Nonlinear Science and Numerical Simulation"](https://www.sciencedirect.com/science/article/pii/S1007570422001265?dgcid=coauthor)에 게재되었습니다.
 
