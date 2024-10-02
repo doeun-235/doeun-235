@@ -8,12 +8,21 @@ M.S in Mathematics, 2021 (Yonsei University, Seoul) / B.S in Mathematics & Philo
 
 ![numpy](https://img.shields.io/badge/NumPy-013243?style=flat-square&logo=numpy&logoColor=white) ![pandas](https://img.shields.io/badge/pandas-150458?style=flat-square&logo=pandas&logoColor=white) ![matplotlib](https://img.shields.io/badge/matplotlib-11557c?style=flat-square) ![tensorflow](https://img.shields.io/badge/TensorFlow-ff6f00?style=flat-square&logo=tensorflow&logoColor=white)
 
+## 경력
+(주) 딥메트릭스 블라블라
+
 ## 주요 경험
 ### [DACON 재정정보 AI 검색 알고리즘 경진대회 참여](https://github.com/theNocturni/WASSUP-DACON-FinAI)
 - huggingface, langchain, peft, faiss, trl, pymupdf, gmft
-- 재정정보 pdf 문서의 내용을 참고하여 주어진 질문에 답변하는 검색 알고리즘 개발하는 경진대회
+- [재정정보 pdf 문서의 내용을 참고하여 주어진 질문에 답변하는 검색 알고리즘 개발하는 경진대회](https://dacon.io/competitions/official/236295/overview/description)
 - faiss 기반 retriver와 multilingual-E5기반 embedding 모델로 vector DB를 구축하고, gemma2 기반 LLM 모델 학습
 - pymupdf와 gmft를 이용한 표 전처리, 코드 리팩토링 등에 기여
+
+### [DACON Fiscal Documents Question-Answering AI Competition](https://github.com/theNocturni/WASSUP-DACON-FinAI)
+- huggingface, langchain, peft, faiss, trl, pymupdf, gmft
+- For given fiscal documents from [the contest](https://dacon.io/competitions/official/236295/overview/description), built Question-Answering AI system based on Gemma2
+- Constructed Vector DB with multilingual E5 model and FAISS based retriver
+- Preprocessed tables from pdf files with pymupdf and gmft, refactored code
 
 ### [알라딘 주간 베스트 셀러 및 중고 매장 도서 DB 구축](https://github.com/kdt-3-second-Project/aladin_usedbook)
 - NumPy, Pandas, Matplotlib, Beautifulsoup, re, Scikit-learn, xgboost, Mecab
@@ -27,15 +36,20 @@ M.S in Mathematics, 2021 (Yonsei University, Seoul) / B.S in Mathematics & Philo
 - NumPy, matplotlib
 - 비선형 ODE 시스템인 쿠커-스메일 모델 및 그 확장들의 수치적 해를 구하는 시뮬레이션을 진행
 - [석사 학위 논문](http://www.riss.kr/search/detail/DetailView.do?p_mat_type=be54d9b8bc7cdb09&control_no=c40c7fb1b28114ebffe0bdc3ef48d419)(개명 전 이름으로 표기됨)
-  - 쿠커-스메일 모델을 확률 미분방정식으로 확장한 모델을 하나 제시하고 특정 상호작용 하의 동기화 현상을 기술하는 
-  - 에너지 관련 지표를 제시해 특정 조건에서의 해의 존재성과 수렴성을 보임
+  - 운동하는 물체들이 의도된 모양으로 군집을 이루도록 동기화 시킬 수 있는 상호작용의 예시가 될 수 있는 모델을 제시.
+  - 상대위치 및 상대속도에 대한 함수로 표현되는 힘을 노이즈가 섞인 형태로 물체들 간에 주고받는 시스템.
+  - 쿠커-스메일 모델을 확률 미분방정식으로 확장한 모델로, 에너지 관련 지표를 제시해 특정 조건에서 해의 존재성과 수렴성을 보임.
 - [후속연구 논문](https://arxiv.org/abs/2105.07353)에 참여
   - 위 모델에서의 수렴 속도에 대한 이론적 · 수치적 추정
   - SCIE급 저널이자 SCOPUS 등재지인 ["Communications in Nonlinear Science and Numerical Simulation"](https://www.sciencedirect.com/science/article/pii/S1007570422001265?dgcid=coauthor)에 게재.
   - 모델 제안, 해의 존재성 및 수렴성 증명, 수치적 시뮬레이션 진행 및 이론에 부합되는지 검토 등에 기여
 
 ### 교수 경험
-공학수학 과목들의 조교로서 수학 이론 설명 및 문제풀이 등을 연세대학교에서 맡았습니다. 4학기 동안 수업 조교를 하며 미적분학, 선형대수, 상미분방정식 및 편미분방정식, 복소해석 등을 다뤘습니다.
+- 연세대학교 공학수학 과목들의 조교 : 2018-2020. 수학 이론 설명 및 문제풀이
+- 4학기 동안 수업 조교를 했으며, 미적분학, 선형대수, 상미분방정식 및 편미분방정식, 복소해석 등을 다룸.
+
+## Work Experience
+blahblahdeepmetricsblah
 
 ## Experience
 ### [1902 NIMS report](https://github.com/neulbo-187/1902-NIMS-report)
