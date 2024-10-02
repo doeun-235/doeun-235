@@ -9,20 +9,20 @@ M.S in Mathematics, 2021 (Yonsei University, Seoul) / B.S in Mathematics & Philo
 ![numpy](https://img.shields.io/badge/NumPy-013243?style=flat-square&logo=numpy&logoColor=white) ![pandas](https://img.shields.io/badge/pandas-150458?style=flat-square&logo=pandas&logoColor=white) ![matplotlib](https://img.shields.io/badge/matplotlib-11557c?style=flat-square) ![tensorflow](https://img.shields.io/badge/TensorFlow-ff6f00?style=flat-square&logo=tensorflow&logoColor=white)
 
 ## 경력
-딥메트릭스 블라블라
+### 주식회사 딥메트릭스 / Researcher / 22.06 - 23.05
+- NumPy, Pandas, Git
+- 분당서울대병원 인공호흡기 자율주행 AI : 데이터 전처리 프로세스 구축 및 개선
+  - 데이터 별 입력 주파수 및 값 분포를 조사하고, 병원과 협업하여 데이터 및 결측치 정의
+  - 의료 지식에 데이터가 부합하는지 검토하여 전처리 프로세스의 문제점 발견 및 개선
+- 서울대병원 인공호흡기 자율주행 AI : 데이터 전처리 프로세스 유지 보수 및 개선
+  - 데이터가 과하게 필터 되는 문제 발견 후, 의료 전문가와 협업하여 해결
 
 ## 주요 경험
 ### [DACON 재정정보 AI 검색 알고리즘 경진대회 참여](https://github.com/theNocturni/WASSUP-DACON-FinAI)
 - huggingface, langchain, peft, faiss, trl, pymupdf, gmft
-- [재정정보 pdf 문서의 내용을 참고하여 주어진 질문에 답변하는 검색 알고리즘 개발하는 경진대회](https://dacon.io/competitions/official/236295/overview/description)
-- faiss 기반 retriver와 multilingual-E5기반 embedding 모델로 vector DB를 구축하고, gemma2 기반 LLM 모델 학습
+- [주어진 재정정보 pdf 문서](https://dacon.io/competitions/official/236295/overview/description)를 바탕으로 질문에 답변하는 gemma2 기반 LLM 모델 학습.
+- faiss 기반 retriver와 multilingual-E5기반 embedding 모델로 vector DB를 구축하여 RAG에 사용.
 - pymupdf와 gmft를 이용한 표 전처리, 코드 리팩토링 등에 기여
-
-### [DACON Fiscal Documents Question-Answering AI Competition](https://github.com/theNocturni/WASSUP-DACON-FinAI)
-- huggingface, langchain, peft, faiss, trl, pymupdf, gmft
-- For given fiscal documents from [the contest](https://dacon.io/competitions/official/236295/overview/description), built Question-Answering AI system based on Gemma2
-- Constructed Vector DB with multilingual E5 model and FAISS based retriver
-- Preprocessed tables from pdf files with pymupdf and gmft, refactored code
 
 ### [알라딘 주간 베스트 셀러 및 중고 매장 도서 DB 구축](https://github.com/kdt-3-second-Project/aladin_usedbook)
 - NumPy, Pandas, Matplotlib, Beautifulsoup, re, Scikit-learn, xgboost, Mecab
@@ -52,11 +52,11 @@ M.S in Mathematics, 2021 (Yonsei University, Seoul) / B.S in Mathematics & Philo
 blahblahdeepmetricsblah
 
 ## Experience
-### [1902 NIMS report](https://github.com/neulbo-187/1902-NIMS-report)
-I made 2 programs. The first one is classifing iris data with decision tree and random forest. The second one is suggesting houses and positioning the houses on the map. I became more skillful at using sklearn, Pandas, and Folium through this project. Caused to collisions happened during installing libraries, I learned setting develop environment is so important. 
-
-### [Making DB of Playlist with Web Crawling in Python](https://github.com/neulbo-187/making-DB-with-crawling)
-I crawled datum of musics in the given playlist, from a music streaming site 'genie.com', and exported DB as xlsx file. It was my first time that making a crawling project from zero, so I learned how to choose a proper site and how to analyze the parsed page.
+### [DACON Fiscal Documents Question-Answering AI Competition](https://github.com/theNocturni/WASSUP-DACON-FinAI)
+- huggingface, langchain, peft, faiss, trl, pymupdf, gmft
+- For given fiscal documents from [the contest](https://dacon.io/competitions/official/236295/overview/description), built Question-Answering AI system based on Gemma2
+- Constructed Vector DB with multilingual E5 model and FAISS based retriver
+- Preprocessed tables from pdf files with pymupdf and gmft, refactored code
 
 ### [Simulations for Cucker-Smale-Model and Its Extensions](https://github.com/doeun-235/Cucker-Smale-Model)
 I coded and ran simulations about the Cucker-Smale model, nonlinear ODE system describing the flocking behaviors, and its extensions. Mostly, the works have been done for writing [my master's degree thesis](http://www.riss.kr/search/detail/DetailView.do?p_mat_type=be54d9b8bc7cdb09&control_no=c40c7fb1b28114ebffe0bdc3ef48d419)(I changed my name from 'Tack Geun' to 'Doeun'). I extended and suggested a model, made indices about energy to prove the theory and proved that there is a condition for flocking by analytic methods. I implemented numerical methods for solving ODE and SDE with NumPy and plotted for showing that numerical results match to theoretical results with matplotlib.
