@@ -58,8 +58,8 @@
     - 35개 도시가 총 19종의 도시 유형으로 분류됨
     - e.g. *"Minneapolis의 도시 유형 : 중서부, 덜 빈곤한, 인구규모가 작은, 낮은 인구밀도, 인종 별 거주지 분리 정도가 낮은 도시"*
 - BCHI Dataset의 다양한 통계 항목과 인종, 성별, 도시유형의 층화 정보를 이용하여 해당 집단의 특정 통계 항목의 값을 회귀 예측하는 프로젝트 진행
-  - e.g. *도시의 특성,인종,성별로 층화된 인구집단에 대하여, 층화된 정보 및 Adult Physical Inactivity, Diabetes, Teen Obesity, Adult Obesity, Population : Seniors, Income : Poverty in All Ages 등의 통계값를 이용하여, All Cancer Deaths 통계값을 예측*
   - All Cancer Deaths, Lung Cancer Deathes 등 총 14가지 통계 항목에 대하여 회귀 예측 진행
+  - e.g. *도시의 특성,인종,성별로 층화된 인구집단에 대하여, 층화된 정보 및 Adult Physical Inactivity, Diabetes, Teen Obesity, Adult Obesity, Population : Seniors, Income : Poverty in All Ages 등의 통계값를 이용하여, All Cancer Deaths 통계값을 예측*
   - 예측 방법으로 XGBoost Regressor, Random Forest Regressor, Multilayer Perceptron, k-NN Regressor을 사용
     - k-NN의 경우는 층화 항목에 대해서만 custom metric을 이용해 예측하고, 다른 참고 항목은 사용하지 않음
     - 기타 모델의 경우, 결측 값들을 제외하고 학습을 진행한 경우와 결측값을 k-NN을 이용한 예측값으로 보간한 뒤 진행한 경우의 성능을 비교함
@@ -74,9 +74,10 @@
 <center><i><b>도표.</b> 각 예측 목표 항목 별로 설정된 참고 항목 후보의 예시</i></center>
 
 ![결과비교](./imgs/6-2.rslt2.png)
+
 <center><i><b>도표.</b> k-NN, k-NN 전처리를 사용한 XGBoost, 사용하지 않은 XGBoost 간의 성능 비교</i></center>
 
-- k-NN에서 사용한 custom metric 제시, 
+- 프로젝트 방향 결정을 위한 EDA, k-NN에서 사용한 custom metric 제시 및 구현, k-NN을 활용한 결측치 보간 제안, 코드 리팩토링 등에 기여. 조장으로서 프로젝트 방향 제시.
 
 ### [쿠커-스메일 모델 및 그 확장에 대한 시뮬레이션](https://github.com/doeun-235/Cucker-Smale-Model)
 
