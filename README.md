@@ -9,7 +9,7 @@ M.S in Mathematics, 2021 (Yonsei University, Seoul) / B.S in Mathematics & Philo
 ![numpy](https://img.shields.io/badge/NumPy-013243?style=flat-square&logo=numpy&logoColor=white) ![pandas](https://img.shields.io/badge/pandas-150458?style=flat-square&logo=pandas&logoColor=white) ![matplotlib](https://img.shields.io/badge/matplotlib-11557c?style=flat-square) ![tensorflow](https://img.shields.io/badge/TensorFlow-ff6f00?style=flat-square&logo=tensorflow&logoColor=white)
 
 ## 경력
-(주) 딥메트릭스 블라블라
+딥메트릭스 블라블라
 
 ## 주요 경험
 ### [DACON 재정정보 AI 검색 알고리즘 경진대회 참여](https://github.com/theNocturni/WASSUP-DACON-FinAI)
