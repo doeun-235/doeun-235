@@ -56,6 +56,7 @@
 
 ### 배운 점
 
+- 적절한 모듈화가 개발의 효율성 및 코드의 가독성에 주는 영향력을 체감함.
 - 소수의 샘플로 빠른 개발을 진행하여, 현재의 방법론이 가능한지 혹은 적절한지 평가하는 것은 전략적으로 유효함.
   - 프로젝트의 방향성을 잡는데 도움이 되고, 좋은 baseline의 기준이 될 수 있음.
   - 빠르게 프로토타입을 개발하는데 도메인 지식 등을 이용해 휴리스틱한 판단을 하는 것은 유효한 도움이 될 수 있음.
@@ -74,20 +75,20 @@
 
 - 24.06.14 - 24.06.24
 - **Libraries** : NumPy, Pandas, Matplotlib, Scikit-learn, PyTorch, Jit
-- 미국 대도시 보건 데이터셋([BCHI Dataset](https://bigcitieshealthdata.org/))은 35개 대도시의 16종으로 층화된 인종 · 성별 인구 집단 별로 다양한 통계항목을 2010-2022 동안 집계한 데이터 셋
-  - 통계 항목은 All Cancer Death, Lung Cancer Death, Diabetes Death, Drug Overdose Death 등 총 118 종으로 구성
+- 미국 대도시 보건 데이터셋([BCHI Dataset](https://bigcitieshealthdata.org/))은 35개 대도시의 16종으로 층화된 인종 · 성별 인구 집단 별로 다양한 통계항목을 2010-2022 동안 집계한 데이터 셋.
+  - 통계 항목은 All Cancer Death, Lung Cancer Death, Diabetes Death, Drug Overdose Death 등 총 118 종으로 구성.
     - e.g. *"Minneapolis에서 2015년에 인종 상관없이 여성에 대해 All Cancer Death를 조사한 결과, 십만명당 157명"*
-  - 각 대도시는 '지역'/ '경제적 빈곤'/ '인구'/ '인구밀도'/ '인종별 거주지 분리 정도' 5가지 특성을 기준으로 분류 되어 있음
-    - 35개 도시가 총 19종의 도시 유형으로 분류됨
+  - 각 대도시는 '지역'/ '경제적 빈곤'/ '인구'/ '인구밀도'/ '인종별 거주지 분리 정도' 5가지 특성을 기준으로 분류 되어 있음.
+    - 35개 도시가 총 19종의 도시 유형으로 분류됨.
     - e.g. *"Minneapolis의 도시 유형 : 중서부, 덜 빈곤한, 인구규모가 작은, 낮은 인구밀도, 인종 별 거주지 분리 정도가 낮은 도시"*
-- BCHI Dataset의 다양한 통계 항목과 인종, 성별, 도시유형의 층화 정보를 이용하여 해당 집단의 특정 통계 항목의 값을 회귀 예측하는 프로젝트 진행
-  - All Cancer Deaths, Lung Cancer Deathes 등 총 14가지 통계 항목에 대하여 회귀 예측 진행
+- BCHI Dataset의 다양한 통계 항목과 인종, 성별, 도시유형의 층화 정보를 이용하여 해당 집단의 특정 통계 항목의 값을 회귀 예측하는 프로젝트 진행.
+  - All Cancer Deaths, Lung Cancer Deathes 등 총 14가지 통계 항목에 대하여 회귀 예측 진행.
   - e.g. *도시의 특성,인종,성별로 층화된 인구집단에 대하여, 층화된 정보 및 Adult Physical Inactivity, Diabetes, Teen Obesity, Adult Obesity, Population : Seniors, Income : Poverty in All Ages 등의 통계값를 이용하여, All Cancer Deaths 통계값을 예측*
-  - 예측 방법으로 XGBoost Regressor, Random Forest Regressor, Multilayer Perceptron, k-NN Regressor을 사용
-    - k-NN의 경우는 층화 항목에 대해 $L_p$ norm을 응용한 custom metric을 이용해 예측하고, 다른 참고 항목은 사용하지 않음
-    - 기타 모델의 경우, 결측 값들을 제외하고 학습을 진행한 경우와 결측값을 k-NN을 이용한 예측값으로 보간한 뒤 진행한 경우의 성능을 비교함
-    - 평가 metric으로 RMSE, MAPE, R2 score 등을 사용
-    - 통계 항목 별로 차이가 있지만, k-NN, k-NN으로 결측을 보간한 XGBoost, k-NN으로 결측을 보간하지 않은 XGBoost 세 모델에서 성능이 제일 높게 나옴
+  - 예측 방법으로 XGBoost Regressor, Random Forest Regressor, Multilayer Perceptron, k-NN Regressor을 사용.
+    - k-NN의 경우는 층화 항목에 대해 $L_p$ norm을 응용한 custom metric을 이용해 예측하고, 다른 참고 항목은 사용하지 않음.
+    - 기타 모델의 경우, 결측 값들을 제외하고 학습을 진행한 경우와 결측값을 k-NN을 이용한 예측값으로 보간한 뒤 진행한 경우의 성능을 비교함.
+    - 평가 metric으로 RMSE, MAPE, R2 score 등을 사용.
+    - 통계 항목 별로 차이가 있지만, k-NN, k-NN으로 결측을 보간한 XGBoost, k-NN으로 결측을 보간하지 않은 XGBoost 세 모델에서 성능이 제일 높게 나옴.
 
 |예측 목표 항목|참고 항목|
 |-------|------------------|
@@ -107,17 +108,20 @@
 
 ### 배운 점
 
-- 데이터 셋 분포에 따라, k-NN을 적용하여 결측 보간을 하는 것이 유효할 수 있음
-  - 다만, 다른 보간 방법 혹은 데이터를 drop하는 것에 비해 항상 압도적으로 좋지는 않음
-    - 평균 오차에 관련된 score는 대개 좋아졌지만, r2 score는 나빠지는 경우들이 있었음
-  - 도메인 지식을 바탕으로 custom metric을 설계하는 것이 유효할 수 있음
-  - numpy 및 cython에 맞게 최적화를 시키지 않을 경우, custom metric을 scikit-learn 의 k-NN에 사용하면 속도가 매우 느림
-    - 약 4천 ~ 5천 여개의 데이터를 이용해 3천 ~ 2천 여개의 데이터를 예측하는데 분 단위의 시간이 걸림
-- c를 이용할 수 있도록 리팩토링하여, Jit을 적용시킬 경우 속도가 비약적으로 빨라짐
-  - custom metric에 Jit을 적용하자, 분 단위에서 초 단위로 빨라짐
-  - input이 함수에서 처리될 때 중간값으로 문자를 경유하면 안됨
-  - dict 자료형을 사용하면 안되고, array를 사용해야 함
-- baseline을 잡기 위해 xgboost 등의 machine learning을 사용하는 것이 개발 속도 등의 측면에서 매우 유용할 수 있음
+- 회귀 예측을 평가할 때, 평균 오차에 관한 score와 r2 score를 복합적으로 이용해야 함을 익힘.
+  - r2 score가 좋을수록 x에서의 차이가 y값 예측에 잘 반영되고 있고, 평균 오차에 관한 score(RMSE, MAPE 등)가 좋을수록 실제값과 오차가 적은 것을 데이터를 통해 직접적으로 볼 수 있었음.
+  - 일반적으로 평균 오차에 관한 score가 좋을 수록 r2 score도 좋았으나, 항상 그런 것은 아니었음.
+- 데이터 셋 특성에 따라, k-NN을 적용하여 결측 보간을 하는 것이 유효할 수 있음.
+  - 다만, 다른 보간 방법 혹은 데이터를 drop하는 것에 비해 항상 압도적으로 좋지는 않음.
+    - 평균 오차에 관련된 score는 대개 좋아졌지만, r2 score는 나빠지는 경우들이 있었음.
+  - 도메인 지식을 바탕으로 custom metric을 설계하는 것이 유효할 수 있음.
+  - numpy 및 cython에 맞게 최적화를 시키지 않을 경우, custom metric을 scikit-learn 의 k-NN에 사용하면 속도가 매우 느림.
+    - 약 4천 ~ 5천 여개의 데이터를 이용해 3천 ~ 2천 여개의 데이터를 예측하는데 분 단위의 시간이 걸림.
+- c를 이용할 수 있도록 리팩토링하여, Jit을 적용시킬 경우 속도가 비약적으로 빨라짐.
+  - custom metric에 Jit을 적용하자, 분 단위에서 초 단위로 빨라짐.
+  - input이 함수에서 처리될 때 중간값으로 문자를 경유하면 안됨.
+  - dict 자료형을 사용하면 안되고, array를 사용해야 함.
+- baseline을 잡기 위해 XGBoost 등의 machine learning을 사용하는 것이 개발 속도 등의 측면에서 매우 유용할 수 있음.
 
 ## [Cucker-Smale 모델 및 그 확장에 대한 시뮬레이션](https://github.com/doeun-235/Cucker-Smale-Model)
 
