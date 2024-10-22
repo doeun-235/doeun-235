@@ -55,7 +55,7 @@
     - *subsample* : 1
 
   ![h5_rslt](./imgs/h5_rslt.png)
-  <center><i><<b>도표</b>. best model의 예측값 및 오차 분포와 성능</i></center>
+  <center><i><b>도표</b>. best model의 예측값 및 오차 분포와 성능</i></center>
 
   ![h5_fi](./imgs/h5_fi.png)
   <center><i><b>도표</b>. best model의 feature importance</i></center>
@@ -63,7 +63,7 @@
 ||RMSE|R2 score|N|
 |:--:|--:|--:|--:|
 |test 1|610.7|0.973|784,213|
-|test 2|1440|0.914|5968|
+|test 2|1,440|0.914|5,968|
 |harmonic mean|857.8|0.943||
 
 <center><i><b>도표</b>. test별 데이터셋의 크기 및 XGBoost Regressor에서의 최고 성적</i></center>
@@ -125,7 +125,6 @@
 <center><i><b>도표.</b> 각 예측 목표 항목 별로 설정된 참고 항목 후보의 예시</i></center>
 
 ![결과비교](./imgs/6-2.rslt2.png)
-
 <center><i><b>도표.</b> k-NN, k-NN 전처리를 사용한 XGBoost, 사용하지 않은 XGBoost 간의 성능 비교</i></center>
 
 ### 기여
@@ -166,11 +165,9 @@
   - **기여** : 모델 제안, 해의 존재성 및 수렴성 증명, 수치적 시뮬레이션 구현, 진행 및 이론에 부합되는지 검토 등에 기여
 
 ![이론시각화](./imgs/graph_ein-3.png)
-
 <center><i><b>도표.</b> 변수 별 기대값 간의 부등식이 이론에 맞게 성립함을 보인 예시 </i></center>
 
 ![시뮬레이션](./imgs/scs-em.v.1.8-simu-einstein.gif)
-
 <center><i><b>도표.</b> 이론에 맞게 설계대로 운동이 동기화 됨을 보인 예시 </i></center>
 
 # 경력
