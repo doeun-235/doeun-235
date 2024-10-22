@@ -34,25 +34,44 @@
 
 ### 개요
 
-- 24.07.11 - 24.07.22
+- 24.07.11 - 24.07.22, 24.10.19~24.10.23
 - **Libraries** : NumPy, Pandas, Matplotlib, Beautifulsoup, re, Scikit-learn, xgboost, Mecab
 - 알라딘 00년 1월 1주차 ~ 24년 7월 2주차의 베스트셀러 목록을 크롤링하여 141.5만 행의 DB 구축
 - 주간 베스트 셀러 DB를 바탕으로, 78만 행의 알라딘 중고 매장의 중고 도서 DB 구축
-- XGBoost Regressor를 이용하여 중고가 예측 모델 개발하고 두 가지 방법으로 평가
-  - test 1 : 초기에 test set으로 나눈 데이터로 평가
-  - test 2 : valid 및 test set 중 train set에 포함된 적 없는 종류의 도서에 한해서 평가
+- XGBoost Regressor를 이용하여 중고가 예측 모델 개발
+  - cross validation과 grid search를 이용하여 486개의 조합 중 우수 hyperparameter 14개를 추림
+    - Python API 및 cupy를 이용하여 GridSearchCV를 진행할 수 있는 함수를 만들어 연산 속도를 개선
+  - 우수 hyperparameter로 학습한 모델들에 대해서는 두 가지 방법으로 평가
+    - test 1 : 초기에 test set으로 나눈 데이터로 평가
+    - test 2 : test set 중 train set에 포함된 적 없는 종류의 도서에 한해서 평가
+- Best model
+  - 독립변수 : 중고품질, 취급지점, 도서명, 도서명에 포함된 부가적 문구(양장본, 한정판 등), 저자, 기타 저자, 출판사, 출간일, 정가, 대분류
+  - hyperparameter
+    - *num_boost_round* : 2500
+    - *learning_rate* : 0.3
+    - *max_depth* : 6
+    - *min_child_weight* : 4
+    - *colsample_bytree* : 1
+    - *subsample* : 1
+
+  ![h5_rslt](./imgs/h5_rslt.png)
+  <center><i><<b>도표</b>. best model의 예측값 및 오차 분포와 성능</i></center>
+
+  ![h5_fi](./imgs/h5_fi.png)
+  <center><i><b>도표</b>. best model의 feature importance</i></center>
 
 ||RMSE|R2 score|N|
 |:--:|--:|--:|--:|
-|test 1|811|0.95||
-|test 2|1413|0.91||
+|test 1|610.7|0.973|784,213|
+|test 2|1440|0.914|5968|
+|harmonic mean|857.8|0.943||
 
-<center><i><b>도표</b>. test별 데이터셋의 크기 및 XGBoost Regressor에서의 성적</i></center>
+<center><i><b>도표</b>. test별 데이터셋의 크기 및 XGBoost Regressor에서의 최고 성적</i></center>
 
 ### 기여
 
 - 조장으로서 프로젝트 기획 및 진행
-- 크롤링 코드 개발, DB 및 model의 prototype 개발, 실험 설계 및 진행 등에 기여
+- 크롤링 코드 개발, DB 및 model의 prototype 개발, 실험 설계, 진행 및 평가 등에 기여
 
 ### 배운 점
 
@@ -65,9 +84,17 @@
   - train set에 포함 된 적 없는 종류의 도서에 대해서만 추가적인 평가를 진행.
   - 해당 test에서도 성적이 큰 차이 나지 않게 잘 나오는 것을 확인함.
   - 도서 별 가격을 모델이 외운 것이 아니라 자연어 처리 결과를 모델이 반영하고 있음을 확인하고 있었음.
+- 데이터 셋의 column 중 불명확한 것은 사용하지 않아도, 모델의 복잡도를 유효한 방향으로 높히면 성능이 좋고 더 강건한 모델을 개발할 수 있음을 확인.
+  - 알라딘이 개발한 판매지수(SalesPoint)를 중고도서 예측에 이용하면, 단순한 모델로도 좋은 성능을 얻을 수 있다는 장점이 있었지만 단점도 있었음
+  - best model에 쓰인 hyperparamter를 포함하여, 동일한 hyperparameter로 SalesPoint를 제외하고 학습시켰을 때 성능이 더 좋고 더 강건한 경우가 몇 있었음.
+  - 추산법이 공개 되지 않아 불명확할 뿐 아니라, 중고가 예측의 성능을 더 고도화하는 단계에서는 방해가 될 수 있다고 판단.
 - 간단한 모델로 리버스 엔지니어링을 진행하여, 시스템이 어느 정도로 복잡하거나 단순한지 평가해볼 수 있음.
   - 간단하고 기본적인 전처리만 진행한 상황에서, 모델이 처음 보는 종류의 데이터에 대해서도 XGBoost 만으로도 충분히 좋은 성능이 나올 수 있었음.
   - 알라딘에서 중고도서에 대해서 저자, 출판사, 중고 품질 등을 기준으로 가격을 책정하고 있으며, 책정 시스템이 아주 복잡하지는 않으리라 유추할 수 있었음.
+- 연산량의 관점에서 grid search는 hyperparameter 탐색에 매우 비효율적.
+  - grid search를 이용하면 hyperparameter에 따른 변화를 직접적으로 관찰할 수 있어 결과 분석과 앞으로의 방향 설정에 용이하다는 장점이 있지만, 연산량의 측면에서 지나치게 비효율적.
+  - 모델에 맞게 hyperparameter의 탐색 순서를 설정하거나, Bayesian search 등을 활용하면 연산에 드는 자원 및 시간을 보다 효율적으로 사용할 수 있었을 것이라 기대.
+- 몇 십만 개 단위의 데이터를 XGBoost에 적용하고자 하면, Sci-kit API 보다 Python API를 이용하는 것이 연산 속도의 면에서 더 빠를 수 있고, 특히 cupy를 이용해 gpu를 사용하면 연산속도를 비약적으로 빠르게 할 수 있음.
 
 ## [미국 대도시 보건 데이터셋을 기반으로 한 질병 발병 및 사망 통계 예측 AI 모델](https://github.com/WASSUP-AIModel-3rd-Project1/Project-1)
 
