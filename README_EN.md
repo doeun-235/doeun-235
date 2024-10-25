@@ -8,6 +8,9 @@
 - M.S in Mathematics, 2021 (Yonsei University, Seoul)
 - B.S in Mathematics & Philosophy, 2018 (Yonsei University,Seoul)
 
+English version is not prepared yet, Sorry.
+
+<!--->
 ## Tech Stack
 ![c](https://img.shields.io/badge/C-a8b9cc?style=flat-square&logo=c&logoColor=black) ![python](https://img.shields.io/badge/Python-3776ab?style=flat-square&logo=python&logoColor=white) ![jupyter](https://img.shields.io/badge/Jupyter-f37626?style=flat-square&logo=jupyter&logoColor=white) ![mysql](https://img.shields.io/badge/mysql-4479A1?style=flat-square&logo=mysql&logoColor=white) ![matlab](https://img.shields.io/badge/MATLAB-0076a8?style=flat-square&logo=mathworks&logoColor=white)
 
