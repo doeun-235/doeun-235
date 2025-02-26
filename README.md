@@ -33,12 +33,14 @@
 - pymupdf와 gmft를 이용한 표 전처리, 코드 리팩토링 등에 기여
   - 표 전처리를 통해 Public 기준, 0.657에서 0.666으로 증가하고, 이후 0.690으로 증가
 
-## [알라딘 주간 베스트 셀러 및 중고 매장 도서 DB 구축](https://github.com/kdt-3-second-Project/aladin_usedbook)
+## 알라딘 주간 베스트 셀러/중고 매장 도서 DB 구축 및 관련 프로젝트 진행
 
-### 개요
+### [알라딘 주간 베스트 셀러/중고 매장 도서 DB 구축 및 중고도서 가격 예측 모델 개발](https://github.com/kdt-3-second-Project/aladin_usedbook)
+
+#### 개요
 
 - 24.07.10 - 24.07.22, 24.10.19~24.10.23
-- **Libraries** : NumPy, Pandas, Matplotlib, Beautifulsoup, re, Scikit-learn, xgboost, Mecab
+- **Libraries** : NumPy, Pandas, Matplotlib, Beautifulsoup, re, Scikit-learn, xgboost, Mecab, cupy
 - 알라딘 00년 1월 1주차 ~ 24년 7월 2주차의 베스트셀러 목록을 크롤링하여 141.5만 행의 DB 구축
   - 15.8만 여종의 도서에 대하여, 해당 주차에서의 순위 및 도서 관련 정보를 포함
 - 주간 베스트 셀러 DB를 바탕으로, 78만 행의 알라딘 중고 매장의 중고 도서 DB 구축
@@ -67,39 +69,69 @@
 
 ||RMSE|R2 score|N|
 |:--:|--:|--:|--:|
-|test 1|610.7|0.973|784,213|
+|test 1|610.7|0.973|156,843|
 |test 2|1,440|0.914|5,968|
 |harmonic mean|857.8|0.943||
 
 <center><i><b>도표</b>. test별 데이터셋의 크기 및 XGBoost Regressor에서의 최고 성적</i></center>
 
-### 기여
+#### 기여
 
 - 조장으로서 프로젝트 기획 및 진행
 - 크롤링 코드 개발, DB 및 model의 prototype 개발, 실험 설계, 진행 및 평가 등에 기여
 
-### 배운 점
+#### 배운 점
 
-- 적절한 모듈화가 개발의 효율성 및 코드의 가독성에 주는 영향력을 체감함.
-- 소수의 샘플로 빠른 개발을 진행하여, 현재의 방법론이 가능한지 혹은 적절한지 평가하는 것은 전략적으로 유효함.
-  - 프로젝트의 방향성을 잡는데 도움이 되고, 좋은 baseline의 기준이 될 수 있음.
-  - 빠르게 prototype를 개발하는데 도메인 지식 등을 이용해 휴리스틱한 판단을 하는 것은 유효한 도움이 될 수 있음.
-  - 하지만 휴리스틱한 결정들에 대해서 체계적인 기준을 세우기 위해서는 예상보다 큰 노고가 들 수 있음.
-- 모델이 접한적 없는 종류의 데이터에 대해 추가적인 test를 진행함으로써 모델의 학습 정도에 대해서 적극적으로 평가할 수 있음.
-  - train set에 포함 된 적 없는 종류의 도서에 대해서만 추가적인 평가를 진행.
-  - 해당 test에서도 성적이 큰 차이 나지 않게 잘 나오는 것을 확인함.
-  - 도서 별 가격을 모델이 외운 것이 아니라 자연어 처리 결과를 모델이 반영하고 있음을 확인하고 있었음.
-- 데이터 셋의 column 중 불명확한 것은 사용하지 않아도, 모델의 복잡도를 유효한 방향으로 높히면 성능이 좋고 더 강건한 모델을 개발할 수 있음을 확인.
-  - 알라딘이 개발한 판매지수(SalesPoint)를 중고도서 예측에 이용하면, 단순한 모델로도 좋은 성능을 얻을 수 있다는 장점이 있었지만 단점도 있었음
-  - best model에 쓰인 hyperparamter를 포함하여, 동일한 hyperparameter로 SalesPoint를 제외하고 학습시켰을 때 성능이 더 좋고 더 강건한 경우가 몇 있었음.
-  - 추산법이 공개 되지 않아 불명확할 뿐 아니라, 중고가 예측의 성능을 더 고도화하는 단계에서는 방해가 될 수 있다고 판단.
-- 간단한 모델로 리버스 엔지니어링을 진행하여, 시스템이 어느 정도로 복잡하거나 단순한지 평가해볼 수 있음.
-  - 간단하고 기본적인 전처리만 진행한 상황에서, 모델이 처음 보는 종류의 데이터에 대해서도 XGBoost 만으로도 충분히 좋은 성능이 나올 수 있었음.
-  - 알라딘에서 중고도서에 대해서 저자, 출판사, 중고 품질 등을 기준으로 가격을 책정하고 있으며, 책정 시스템이 아주 복잡하지는 않으리라 유추할 수 있었음.
-- 연산량의 관점에서 grid search는 hyperparameter 탐색에 매우 비효율적.
-  - grid search를 이용하면 hyperparameter에 따른 변화를 직접적으로 관찰할 수 있어 결과 분석과 앞으로의 방향 설정에 용이하다는 장점이 있지만, 연산량의 측면에서 지나치게 비효율적.
-  - 모델에 맞게 hyperparameter의 탐색 순서를 설정하거나, Bayesian search 등을 활용하면 연산에 드는 자원 및 시간을 보다 효율적으로 사용할 수 있었을 것이라 기대.
-- 몇 십만 개 단위의 데이터를 XGBoost에 적용하고자 하면, Sci-kit API 보다 Python API를 이용하는 것이 연산 속도의 면에서 더 빠를 수 있고, 특히 cupy를 이용해 gpu를 사용하면 연산속도를 비약적으로 빠르게 할 수 있음.
+- 적절한 모듈화가 개발의 효율성 및 코드의 가독성에 주는 영향력을 체감
+- 소수의 샘플로 빠른 개발을 진행하여, 현재의 방법론이 가능한지 혹은 적절한지 평가하는 것은 전략적으로 유효
+  - 프로젝트의 방향성을 잡는데 도움이 되고, 좋은 baseline의 기준이 될 수 있음
+  - 도메인 지식 등을 이용해 휴리스틱한 판단을 하는 것은 빠르게 prototype를 개발하는데 유효한 도움이 될 수 있음
+- 모델이 접한적 없는 종류의 데이터로 제한된 test를 재진행하여 모델의 학습 정도에 대해서 적극적으로 평가
+  - train set에 포함 된 적 없는 종류의 도서에 대해서만 추가적인 평가 진행
+  - 도서 별 가격을 모델이 외운 것이 아니라 자연어 처리 결과를 모델이 반영하고 있음을 확인
+- 데이터 셋의 column 중 불명확한 것은 사용하지 않아도, 모델의 복잡도를 유효한 방향으로 높히면 성능이 좋고 더 강건한 모델을 개발할 수 있음을 확인
+  - 알라딘이 개발한 판매지수(SalesPoint)를 중고도서 예측에 이용하면, 단순한 모델로도 좋은 성능을 얻을 수 있다는 장점이 있었지만, 추산법을 명확히 알 수 없다는 단점도 있었음
+  - best model에 쓰인 hyperparamter를 포함하여, 동일한 hyperparameter로 SalesPoint를 제외하고 학습시켰을 때 성능이 더 좋고 더 강건한 경우가 있는 것을 확인.
+- 간단한 모델로 리버스 엔지니어링을 진행하여, 알라딘 중고도서 가격 산정 시스템이 많이 복잡하지는 않을 것이라 유추할 수 있었음
+  - 기본적인 전처리만 진행한 상황에서, 모델이 처음 보는 종류의 데이터에 대해서도 XGBoost 만으로도 충분히 좋은 성능이 나올 수 있었음
+- 연산량의 관점에서 grid search는 hyperparameter 탐색에 매우 비효율적
+  - 모델에 맞게 hyperparameter의 탐색 순서를 설정하거나, Bayesian search 등을 활용하면 연산에 드는 자원 및 시간을 보다 효율적으로 사용할 수 있었을 것이라 기대
+- 몇 십만 개 단위의 데이터를 XGBoost에 적용하고자 하면, Sci-kit API 보다 Python API를 이용하면 연산 속도가 더 빠를 수 있고, 특히 cupy를 이용해 gpu를 사용하면 연산속도를 비약적으로 빠르게 할 수 있음
+
+### [encoder-only transformer 기반 도서 정가 예측 모델 개발 및 initial learning rate와 best epoch의 분포 사이 관계 조사](https://github.com/doeun-235/aladin_book_price)
+
+#### 개요
+
+- **Libraries** : PyTorch, NumPy, Pandas, Matplotlib, re, Scikit-learn, xgboost, [Mecab](https://pypi.org/project/python-mecab-ko/)
+- 위에서 구축한 알라딘 베스트셀러 데이터셋을 사용하여, 저자, 책이름, 출간날짜 등의 정보로 정가를 예측
+- encoder-only transformer 기반 모델을 개발한 뒤, 성적을 평가하고 initial learning rate(이하 *init_lr*)와 best_epoch의 분포 사이 관계 조사
+- 성적 : RMSE, R2 Score에서 Random Forest나 XGBoost 등 보다 좋은 성적을 기록
+
+  |        |Encoder Based Model|        RFR |        XGB  |        MLP  |
+  |--------|------------------:|-----------:|------------:|------------:|
+  |RMSE    | 8337.54     | 9079.71    | 9544.35     | 10034.56    |
+  |MAPE    |    0.359422 |    0.30136 |    0.36642  |    0.39802  |
+  |R2 SCORE|    0.4744   |    0.37666 |    0.31123  |    0.23795  |
+
+  *<b>도표.</b> 각 실험 별 best model과 성능*
+
+  ![best_dist](./imgs/rslt_dist.png)
+
+  *<b>도표.</b> test set의 정가, best model의 절대오차 및 상대오차 histogram*
+
+- ReduceLROnPlateau scheduler를 사용할 때 *init_lr*에 따른 best_epoch의 분포를 보기 위해 7개 *init_lr*에 대해 총 200번의 학습 진행
+- *best_epoch*의 분포와 *init_lr* 사이 관계식을 결정하기엔 부족하지만, 추가적인 조사를 했을 때 유의미한 결과가 나올 가능성을 시사하는 결과가 나옴
+  - 최대 epoch 제한에 영향받지 않은 6개의 *init_lr*에 대해, *best_epoch*<sup>*d*</sup>의 median 회귀 시 R2 Score 0.96 초과하고, 해당 모델로 *best_epoch*의 median을 회귀했을 때 RMSE 10 미만인 선형회귀 모델을 $-0.75\leq d \leq 0.75, d\neq0$의 $d$에 대해 모두 찾을 수 있음
+  - 임의의 숫자들로 유사한 조건에서 시뮬레이션 했을때, 비슷한 수준의 성적이 나올 통계적 확률은 0.054 정도
+  - 나머지 하나의 *init_lr*에서의 *best_epoch*의 median을 오차 8 미만으로 예측
+
+![regrslt1](./imgs/reg_rslts_plot0.png)
+
+*<b>도표.</b> init_lr 별 best epoch의 산포도 및 회귀선. reg_whole : 전체 데이터로 회귀, reg_median : best epoch의 median에 대한 회귀, reg_mean : best epoch의 mean에 대한 회귀*
+
+#### 배운 점
+
+- 
 
 ## [미국 대도시 보건 데이터셋을 기반으로 한 질병 발병 및 사망 통계 예측 AI 모델](https://github.com/WASSUP-AIModel-3rd-Project1/Project-1)
 
@@ -180,7 +212,7 @@
 ## 주식회사 딥메트릭스
 
 - Researcher / 22.06 - 23.05
-- 서울대병원 인공호흡기 자율주행 AI 프로젝트 및 분당 서울대 병원 인공호흡기 자율주행 AI 프로젝트 참여
+- 서울대병원 인공호흡기 AI 프로젝트 및 분당 서울대 병원 인공호흡기 AI 프로젝트 참여
 - 데이터 전처리 프로세스 구축, 유지보수 및 개선에 참여
 
 ## 교수 경험
