@@ -19,7 +19,7 @@
 
 ### 개요
 
-- 24.07.24 - 24.08.21, 24.09.27 - (현재)
+- 24.07.24 - 24.08.21, 24.09.27 - 24.12.31
 - **Libraries** : huggingface, langchain, peft, faiss, trl, pymupdf, gmft
 - [주어진 재정정보 pdf 문서](https://dacon.io/competitions/official/236295/overview/description)를 바탕으로 질문에 답변하는 gemma2 기반 LLM 모델을 RAG, LoRA를 활용하여 학습.
 - **대회 성적**
@@ -33,19 +33,32 @@
 - pymupdf와 gmft를 이용한 표 전처리, 코드 리팩토링 등에 기여
   - 표 전처리를 통해 Public 기준, 0.657에서 0.666으로 증가하고, 이후 0.690으로 증가
 
-## 알라딘 주간 베스트 셀러/중고 매장 도서 DB 구축 및 관련 프로젝트 진행
+## 알라딘 주간 베스트 셀러/중고 매장 도서 Dataset 구축 및 관련 프로젝트 진행
 
-### [알라딘 주간 베스트 셀러/중고 매장 도서 DB 구축 및 중고도서 가격 예측 모델 개발](https://github.com/kdt-3-second-Project/aladin_usedbook)
+### 0. [알라딘 주간 베스트 셀러/중고 매장 도서 Dataset 구축](https://github.com/kdt-3-second-Project/aladin_usedbook) 및 Dataset 배포
 
 #### 개요
 
-- 24.07.10 - 24.07.22, 24.10.19~24.10.23
-- **Libraries** : NumPy, Pandas, Matplotlib, Beautifulsoup, re, Scikit-learn, xgboost, Mecab, cupy
+- 24.07.10 - 24.07.22, 
+- **Libraries** : NumPy, Pandas, Beautifulsoup, re
 - 알라딘 00년 1월 1주차 ~ 24년 7월 2주차의 베스트셀러 목록을 크롤링하여 141.5만 행의 DB 구축
   - 15.8만 여종의 도서에 대하여, 해당 주차에서의 순위 및 도서 관련 정보를 포함
 - 주간 베스트 셀러 DB를 바탕으로, 78만 행의 알라딘 중고 매장의 중고 도서 DB 구축
   - 10.3만 여종의 역대 베스트셀러 도서에 대한 중고 도서 매물 데이터
-- XGBoost Regressor를 이용하여 중고가 예측 모델 개발
+
+#### 기여
+
+- 조장으로서 프로젝트 기획 및 진행
+- 크롤링 코드 개발, dataset 및 model의 prototype 개발, 실험 설계, 진행 및 평가 등에 기여
+- 데이터셋 정리 및 배포
+
+### 1. [알라딘 중고도서 가격 예측 모델 개발](https://github.com/kdt-3-second-Project/aladin_usedbook)
+
+- 24.07.10 - 24.07.22, 24.10.19~24.10.23
+- **Libraries** : NumPy, Pandas, Matplotlib, re, Scikit-learn, xgboost, Mecab, cupy
+- 위의 알라딘 중고 매장 중고도서 Dataset으로 알라딘 중고도서 가격 예측 모델 개발
+  - 10.3만 여종의 역대 베스트셀러 도서에 대한 78만 행의 중고 도서 매물 데이터
+- XGBoost Regressor를 이용
   - cross validation과 grid search를 이용하여 486개의 조합 중 우수 hyperparameter 14개를 추림
     - Python API 및 cupy를 이용하여 GridSearchCV를 진행할 수 있는 함수를 만들어 연산 속도를 개선
   - 우수 hyperparameter로 학습한 모델들에 대해서는 두 가지 방법으로 평가
@@ -61,24 +74,21 @@
     - *colsample_bytree* : 1
     - *subsample* : 1
 
-  ![h5_rslt](./imgs/h5_rslt.png)
-  <center><i><b>도표</b>. best model의 예측값 및 오차 분포와 성능</i></center>
-
   ![h5_fi](./imgs/h5_fi.png)
-  <center><i><b>도표</b>. best model의 feature importance</i></center>
+  <i><b>도표</b>. best model의 feature importance</i>
 
-||RMSE|R2 score|N|
-|:--:|--:|--:|--:|
-|test 1|610.7|0.973|156,843|
-|test 2|1,440|0.914|5,968|
-|harmonic mean|857.8|0.943||
+  ||RMSE|R2 score|N|
+  |:--:|--:|--:|--:|
+  |test 1|610.7|0.973|156,843|
+  |test 2|1,440|0.914|5,968|
+  |harmonic mean|857.8|0.943||
 
-<center><i><b>도표</b>. test별 데이터셋의 크기 및 XGBoost Regressor에서의 최고 성적</i></center>
+  <i><b>도표</b>. test별 데이터셋의 크기 및 XGBoost Regressor에서의 최고 성적</i>
 
 #### 기여
 
 - 조장으로서 프로젝트 기획 및 진행
-- 크롤링 코드 개발, DB 및 model의 prototype 개발, 실험 설계, 진행 및 평가 등에 기여
+- 크롤링 코드 개발, dataset 및 model의 prototype 개발, 실험 설계, 진행 및 평가 등에 기여
 
 #### 배운 점
 
@@ -96,12 +106,13 @@
   - 기본적인 전처리만 진행한 상황에서, 모델이 처음 보는 종류의 데이터에 대해서도 XGBoost 만으로도 충분히 좋은 성능이 나올 수 있었음
 - 연산량의 관점에서 grid search는 hyperparameter 탐색에 매우 비효율적
   - 모델에 맞게 hyperparameter의 탐색 순서를 설정하거나, Bayesian search 등을 활용하면 연산에 드는 자원 및 시간을 보다 효율적으로 사용할 수 있었을 것이라 기대
-- 몇 십만 개 단위의 데이터를 XGBoost에 적용하고자 하면, Sci-kit API 보다 Python API를 이용하면 연산 속도가 더 빠를 수 있고, 특히 cupy를 이용해 gpu를 사용하면 연산속도를 비약적으로 빠르게 할 수 있음
+- 몇 십만 개 단위의 데이터를 XGBoost에 적용하고자 하면, Sci-kit API 보다 Python API를 이용하면 연산 속도가 더 빠를 수 있고, 특히 cupy를 통해 gpu를 사용하면 더욱 빠르게 할 수 있음
 
-### [encoder-only transformer 기반 도서 정가 예측 모델 개발 및 initial learning rate와 best epoch의 분포 사이 관계 조사](https://github.com/doeun-235/aladin_book_price)
+### 2. [Encoder-only transformer 기반 도서 정가 예측 모델 개발 및 initial learning rate와 best epoch의 분포 사이 관계 조사](https://github.com/doeun-235/aladin_book_price)
 
 #### 개요
 
+- 24.10.23 - 24.11.19, 25.01.04 - 25.02.26
 - **Libraries** : PyTorch, NumPy, Pandas, Matplotlib, re, Scikit-learn, xgboost, [Mecab](https://pypi.org/project/python-mecab-ko/)
 - 위에서 구축한 알라딘 베스트셀러 데이터셋을 사용하여, 저자, 책이름, 출간날짜 등의 정보로 정가를 예측
 - encoder-only transformer 기반 모델을 개발한 뒤, 성적을 평가하고 initial learning rate(이하 *init_lr*)와 best_epoch의 분포 사이 관계 조사
@@ -117,7 +128,7 @@
 
   ![best_dist](./imgs/rslt_dist.png)
 
-  *<b>도표.</b> test set의 정가, best model의 절대오차 및 상대오차 histogram*
+  *<b>도표.</b> test set의 정가, best model의 절대오차 및 상대오차 histogram. 셋 모두 가독성을 위해 plot에서 X축의 범위를 제한함*
 
 - ReduceLROnPlateau scheduler를 사용할 때 *init_lr*에 따른 best_epoch의 분포를 보기 위해 7개 *init_lr*에 대해 총 200번의 학습 진행
 - *best_epoch*의 분포와 *init_lr* 사이 관계식을 결정하기엔 부족하지만, 추가적인 조사를 했을 때 유의미한 결과가 나올 가능성을 시사하는 결과가 나옴
@@ -131,7 +142,7 @@
 
 #### 배운 점
 
-- 
+-  
 
 ## [미국 대도시 보건 데이터셋을 기반으로 한 질병 발병 및 사망 통계 예측 AI 모델](https://github.com/WASSUP-AIModel-3rd-Project1/Project-1)
 
