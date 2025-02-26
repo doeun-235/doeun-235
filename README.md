@@ -35,7 +35,7 @@
 
 ## 알라딘 주간 베스트 셀러/중고 매장 도서 Dataset 구축 및 관련 프로젝트 진행
 
-### 0. [알라딘 주간 베스트 셀러/중고 매장 도서 Dataset 구축](https://github.com/kdt-3-second-Project/aladin_usedbook) 및 Dataset 배포
+### 0. [알라딘 주간 베스트 셀러/중고 매장 도서 Dataset 구축](https://github.com/kdt-3-second-Project/aladin_usedbook) 및 배포
 
 #### 개요
 
@@ -128,21 +128,28 @@
 
   ![best_dist](./imgs/rslt_dist.png)
 
-  *<b>도표.</b> test set의 정가, best model의 절대오차 및 상대오차 histogram. 셋 모두 가독성을 위해 plot에서 X축의 범위를 제한함*
+  *<b>도표.</b> test set의 정가, encoder based model의 절대오차 및 상대오차 histogram. 셋 모두 가독성을 위해 plot에서 X축의 범위를 제한하여, 최댓값 및 최솟값은 X축의 범위 바깥에 있을 수 있음*
 
 - ReduceLROnPlateau scheduler를 사용할 때 *init_lr*에 따른 best_epoch의 분포를 보기 위해 7개 *init_lr*에 대해 총 200번의 학습 진행
 - *best_epoch*의 분포와 *init_lr* 사이 관계식을 결정하기엔 부족하지만, 추가적인 조사를 했을 때 유의미한 결과가 나올 가능성을 시사하는 결과가 나옴
   - 최대 epoch 제한에 영향받지 않은 6개의 *init_lr*에 대해, *best_epoch*<sup>*d*</sup>의 median 회귀 시 R2 Score 0.96 초과하고, 해당 모델로 *best_epoch*의 median을 회귀했을 때 RMSE 10 미만인 선형회귀 모델을 $-0.75\leq d \leq 0.75, d\neq0$의 $d$에 대해 모두 찾을 수 있음
-  - 임의의 숫자들로 유사한 조건에서 시뮬레이션 했을때, 비슷한 수준의 성적이 나올 통계적 확률은 0.054 정도
+  - 임의의 숫자들로 유사한 조건에서 시뮬레이션(Monte Carlo Method) 했을때, 비슷한 수준의 성적이 나올 통계적 확률은 0.054 정도
   - 나머지 하나의 *init_lr*에서의 *best_epoch*의 median을 오차 8 미만으로 예측
 
 ![regrslt1](./imgs/reg_rslts_plot0.png)
 
-*<b>도표.</b> init_lr 별 best epoch의 산포도 및 회귀선. reg_whole : 전체 데이터로 회귀, reg_median : best epoch의 median에 대한 회귀, reg_mean : best epoch의 mean에 대한 회귀*
+*<b>도표.</b> init_lr 별 best_epoch의 산포도 및 회귀선. reg_whole : 전체 데이터로 회귀, reg_median : best_epoch의 median에 대한 회귀, reg_mean : best_epoch의 mean에 대한 회귀*
 
 #### 배운 점
 
--  
+- 실험을 본격적으로 진행하기 전에 sample test를 더 구체적으로 진행하고 적극적으로 조사했으면, 더 의미있는 방향으로 프로젝트를 진행할 수 있지 않았을까 싶음
+  - 고정된 *init_lr*에 대해서 *best_epoch*의 편차가 크게 분포해 있는 것을 근거로, median 값 등 대표값을 추정하는 것으로 방향을 빠르게 정했으면, 계산자원을 더 경제적으로 사용할 수 있었을 것 같음
+  - median값을 사용했을 때 <i>best_epoch<sup>-0.5</sup></i>에 대한 선형회귀 모델을 찾을 수 있는 것을 확인했었음
+  - 하지만 기존 논문에서와 다른 scheduler를 사용했기 때문에, $d$를 한 숫자로 정하려면 추가적인 근거가 많이 필요함을 뒤늦게 알아챔
+- 발생한 상황이 어느 정도 희귀한지 판단하는데, Monte Carlo Method으로 구한 통계적 확률이 도움을 줄 수 있음
+- 데이터가 y값에 대해 매우 균질하지 않게 분포할 경우, 모델 별로 MAPE와 R2 Score에서 상반된 결과를 갖기도 하는 것을 확인
+- 80%이상의 데이터에서 절대오차가 6000 미만임에도 나머지 데이터에서 절대 오차가 매우 크면 전체 RMSE는 8000을 넘어갈 수 있는 것을 체감
+- transformer 관련 모델에서 *init_lr*은 scale이 비슷하면, ReduceLROnPlateau scheduler를 사용했을 때, 성적이 의미있게 큰 차이가 나지는 않을 수 있는 것을 봄
 
 ## [미국 대도시 보건 데이터셋을 기반으로 한 질병 발병 및 사망 통계 예측 AI 모델](https://github.com/WASSUP-AIModel-3rd-Project1/Project-1)
 
