@@ -54,6 +54,8 @@
 
 ### 1. [알라딘 중고도서 가격 예측 모델 개발](https://github.com/kdt-3-second-Project/aladin_usedbook)
 
+#### 개요
+
 - 24.07.10 - 24.07.22, 24.10.19~24.10.23
 - **Libraries** : NumPy, Pandas, Matplotlib, re, Scikit-learn, xgboost, Mecab, cupy
 - 위의 알라딘 중고 매장 중고도서 Dataset으로 알라딘 중고도서 가격 예측 모델 개발
@@ -108,7 +110,7 @@
   - 모델에 맞게 hyperparameter의 탐색 순서를 설정하거나, Bayesian search 등을 활용하면 연산에 드는 자원 및 시간을 보다 효율적으로 사용할 수 있었을 것이라 기대
 - 몇 십만 개 단위의 데이터를 XGBoost에 적용하고자 하면, Sci-kit API 보다 Python API를 이용하면 연산 속도가 더 빠를 수 있고, 특히 cupy를 통해 gpu를 사용하면 더욱 빠르게 할 수 있음
 
-### 2. [Encoder-only transformer 기반 도서 정가 예측 모델 개발 및 initial learning rate와 best epoch의 분포 사이 관계 조사](https://github.com/doeun-235/aladin_book_price)
+### 2. [Encoder only transformer 기반 도서 정가 예측 모델 개발 및 initial learning rate와 best epoch의 분포 사이 관계 조사](https://github.com/doeun-235/aladin_book_price)
 
 #### 개요
 
@@ -173,8 +175,8 @@
   - 예측 방법으로 XGBoost Regressor, Random Forest Regressor, Multilayer Perceptron, k-NN Regressor을 사용.
     - k-NN의 경우는 층화 항목에 대해 $L_p$ norm을 응용한 custom metric을 이용해 예측하고, 다른 참고 항목은 사용하지 않음.
     - 기타 모델의 경우, 결측 값들을 제외하고 학습을 진행한 경우와 결측값을 k-NN을 이용한 예측값으로 보간한 뒤 진행한 경우의 성능을 비교함.
+  - 통계 항목 별로 차이가 있지만, k-NN, k-NN으로 결측을 보간한 XGBoost, k-NN으로 결측을 보간하지 않은 XGBoost 세 모델에서 성능이 제일 높게 나옴.
     - 평가 metric으로 RMSE, MAPE, R2 score 등을 사용.
-    - 통계 항목 별로 차이가 있지만, k-NN, k-NN으로 결측을 보간한 XGBoost, k-NN으로 결측을 보간하지 않은 XGBoost 세 모델에서 성능이 제일 높게 나옴.
 
 |예측 목표 항목|참고 항목|
 |-------|------------------|
