@@ -115,7 +115,7 @@
 - 24.10.23 - 24.11.19, 25.01.04 - 25.02.26
 - **Libraries** : PyTorch, NumPy, Pandas, Matplotlib, re, Scikit-learn, xgboost, [Mecab](https://pypi.org/project/python-mecab-ko/)
 - 위에서 구축한 알라딘 베스트셀러 데이터셋을 사용하여, 저자, 책이름, 출간날짜 등의 정보로 정가를 예측
-- encoder-only transformer 기반 모델을 개발한 뒤, 성적을 평가하고 initial learning rate(이하 *init_lr*)와 best_epoch의 분포 사이 관계 조사
+- encoder only transformer 기반 모델을 개발한 뒤, 성적을 평가하고 initial learning rate(이하 *init_lr*)와 *best_epoch*의 분포 사이 관계 조사
 - 성적 : RMSE, R2 Score에서 Random Forest나 XGBoost 등 보다 좋은 성적을 기록
 
   |        |Encoder Based Model|        RFR |        XGB  |        MLP  |
@@ -128,17 +128,21 @@
 
   ![best_dist](./imgs/rslt_dist.png)
 
-  *<b>도표.</b> test set의 정가, encoder based model의 절대오차 및 상대오차 histogram. 셋 모두 가독성을 위해 plot에서 X축의 범위를 제한하여, 최댓값 및 최솟값은 X축의 범위 바깥에 있을 수 있음*
+  *<b>도표.</b> test set의 정가, encoder based model의 오차 및 상대오차 histogram. 셋 모두 가독성을 위해 plot에서 X축의 범위를 제한하여, 최댓값 및 최솟값은 X축의 범위 바깥에 있을 수 있음*
 
-- ReduceLROnPlateau scheduler를 사용할 때 *init_lr*에 따른 best_epoch의 분포를 보기 위해 7개 *init_lr*에 대해 총 200번의 학습 진행
+- ReduceLROnPlateau scheduler를 사용할 때 *init_lr*에 따른 *best_epoch*의 분포를 보기 위해 7개 *init_lr*에 대해 총 200번의 학습 진행
 - *best_epoch*의 분포와 *init_lr* 사이 관계식을 결정하기엔 부족하지만, 추가적인 조사를 했을 때 유의미한 결과가 나올 가능성을 시사하는 결과가 나옴
-  - 최대 epoch 제한에 영향받지 않은 6개의 *init_lr*에 대해, *best_epoch*<sup>*d*</sup>의 median 회귀 시 R2 Score 0.96 초과하고, 해당 모델로 *best_epoch*의 median을 회귀했을 때 RMSE 10 미만인 선형회귀 모델을 $-0.75\leq d \leq 0.75, d\neq0$의 $d$에 대해 모두 찾을 수 있음
+  - 최대 epoch 제한에 크게 영향 받지 않은 6개의 *init_lr*에 대해, *best_epoch*<sup>*d*</sup>의 median 회귀 시 R2 Score 0.96 초과하고, 해당 모델로 *best_epoch*의 median을 회귀했을 때 RMSE 10 미만인 선형회귀 모델을 $-0.75\leq d \leq 0.75, d\neq0$의 $d$에 대해 모두 찾을 수 있음
   - 임의의 숫자들로 유사한 조건에서 시뮬레이션(Monte Carlo Method) 했을때, 비슷한 수준의 성적이 나올 통계적 확률은 0.054 정도
   - 나머지 하나의 *init_lr*에서의 *best_epoch*의 median을 오차 8 미만으로 예측
 
 ![regrslt1](./imgs/reg_rslts_plot0.png)
 
 *<b>도표.</b> init_lr 별 best_epoch의 산포도 및 회귀선. reg_whole : 전체 데이터로 회귀, reg_median : best_epoch의 median에 대한 회귀, reg_mean : best_epoch의 mean에 대한 회귀*
+
+#### 기여
+
+- 프로젝트 방향 설정, 진행 등 전반. (혼자서 진행)
 
 #### 배운 점
 
