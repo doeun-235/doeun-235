@@ -52,13 +52,13 @@
 - 크롤링 코드 개발, dataset 및 model의 prototype 개발, 실험 설계, 진행 및 평가 등에 기여
 - 데이터셋 정리 및 배포
 
-### 1. [알라딘 중고도서 가격 예측 모델 개발](https://github.com/kdt-3-second-Project/aladin_usedbook)
+### 1. [알라딘 중고매장 도서 가격 예측 모델 개발](https://github.com/kdt-3-second-Project/aladin_usedbook)
 
 #### 개요
 
 - 24.07.10 - 24.07.22, 24.10.19~24.10.23
 - **Libraries** : NumPy, Pandas, Matplotlib, re, Scikit-learn, xgboost, Mecab, cupy
-- 위의 알라딘 중고 매장 중고도서 Dataset으로 알라딘 중고도서 가격 예측 모델 개발
+- 위의 알라딘 중고매장 도서 Dataset으로 알라딘 중고도서 가격 예측 모델 개발
   - 10.3만 여종의 역대 베스트셀러 도서에 대한 78만 행의 중고 도서 매물 데이터
 - XGBoost Regressor를 이용
   - cross validation과 grid search를 이용하여 486개의 조합 중 우수 hyperparameter 14개를 추림
