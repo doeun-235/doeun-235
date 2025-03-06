@@ -6,7 +6,7 @@
 
 ## Tech Stack
 
-- NumPy, Pandas, Keras, Scikit-learn, Matplotlib, MySql
+- NumPy, Pandas, Keras, Torch, Scikit-learn, Matplotlib, MySql
 <!--
 ![c](https://img.shields.io/badge/C-a8b9cc?style=flat-square&logo=c&logoColor=black) ![python](https://img.shields.io/badge/Python-3776ab?style=flat-square&logo=python&logoColor=white) ![jupyter](https://img.shields.io/badge/Jupyter-f37626?style=flat-square&logo=jupyter&logoColor=white) ![mysql](https://img.shields.io/badge/mysql-4479A1?style=flat-square&logo=mysql&logoColor=white) ![matlab](https://img.shields.io/badge/MATLAB-0076a8?style=flat-square&logo=mathworks&logoColor=white)
 
@@ -35,15 +35,15 @@
 
 ## 알라딘 주간 베스트 셀러/중고 매장 도서 Dataset 구축 및 관련 프로젝트 진행
 
-### 0. [알라딘 주간 베스트 셀러/중고 매장 도서 Dataset 구축](https://github.com/kdt-3-second-Project/aladin_usedbook) 및 배포
+### 0. [알라딘 주간 베스트 셀러/중고 매장 도서 Dataset 구축](https://github.com/kdt-3-second-Project/aladin_usedbook) 및 [배포](https://github.com/kdt-3-second-Project/aladin_book_dataset/)
 
 #### 개요
 
-- 24.07.10 - 24.07.22, 
+- 24.07.10 - 24.07.22, 25.03.03 - 25.03.06
 - **Libraries** : NumPy, Pandas, Beautifulsoup, re
-- 알라딘 00년 1월 1주차 ~ 24년 7월 2주차의 베스트셀러 목록을 크롤링하여 141.5만 행의 DB 구축
-  - 15.8만 여종의 도서에 대하여, 해당 주차에서의 순위 및 도서 관련 정보를 포함
-- 주간 베스트 셀러 DB를 바탕으로, 78만 행의 알라딘 중고 매장의 중고 도서 DB 구축
+- 알라딘 00년 1월 1주차 ~ 24년 7월 2주차의 베스트셀러 목록을 크롤링하여 141.5만 행의 Dataset 구축
+  - 15.8만 여종의 도서에 대하여, 해당 주 차에서의 순위 및 도서 관련 정보를 포함
+- 주간 베스트 셀러 DB를 바탕으로, 78만 행의 알라딘 중고 매장의 중고 도서 Dataset 구축
   - 10.3만 여종의 역대 베스트셀러 도서에 대한 중고 도서 매물 데이터
 
 #### 기여
@@ -62,8 +62,8 @@
   - 10.3만 여종의 역대 베스트셀러 도서에 대한 78만 행의 중고 도서 매물 데이터
 - XGBoost Regressor를 이용
   - cross validation과 grid search를 이용하여 486개의 조합 중 우수 hyperparameter 14개를 추림
-    - Python API 및 cupy를 이용하여 GridSearchCV를 진행할 수 있는 함수를 만들어 연산 속도를 개선
-  - 우수 hyperparameter로 학습한 모델들에 대해서는 두 가지 방법으로 평가
+    - XGBoost Python API 및 cupy를 이용하는 grid search & cross validation 함수를 만들어 연산 속도 개선
+  - 우수 hyperparameter로 학습한 모델들을 두 가지 방법으로 평가
     - test 1 : 초기에 test set으로 나눈 데이터로 평가
     - test 2 : test set 중 train set에 포함된 적 없는 종류의 도서에 한해서 평가
 - Best model
@@ -77,6 +77,7 @@
     - *subsample* : 1
 
   ![h5_fi](./imgs/h5_fi.png)
+
   <i><b>도표</b>. best model의 feature importance</i>
 
   ||RMSE|R2 score|N|
@@ -99,16 +100,13 @@
   - 프로젝트의 방향성을 잡는데 도움이 되고, 좋은 baseline의 기준이 될 수 있음
   - 도메인 지식 등을 이용해 휴리스틱한 판단을 하는 것은 빠르게 prototype를 개발하는데 유효한 도움이 될 수 있음
 - 모델이 접한적 없는 종류의 데이터로 제한된 test를 재진행하여 모델의 학습 정도에 대해서 적극적으로 평가
-  - train set에 포함 된 적 없는 종류의 도서에 대해서만 추가적인 평가 진행
-  - 도서 별 가격을 모델이 외운 것이 아니라 자연어 처리 결과를 모델이 반영하고 있음을 확인
-- 데이터 셋의 column 중 불명확한 것은 사용하지 않아도, 모델의 복잡도를 유효한 방향으로 높히면 성능이 좋고 더 강건한 모델을 개발할 수 있음을 확인
-  - 알라딘이 개발한 판매지수(SalesPoint)를 중고도서 예측에 이용하면, 단순한 모델로도 좋은 성능을 얻을 수 있다는 장점이 있었지만, 추산법을 명확히 알 수 없다는 단점도 있었음
+  - train set에 포함 된 적 없는 종류의 도서에 대해서만 추가로 평가. 도서 별 가격을 모델이 외운 것이 아니라 자연어 처리 결과를 모델이 반영하고 있음을 확인
+- 데이터 셋의 column 중 불명확한 것은 사용하지 않아도, 모델의 복잡도를 높혀서 성능이 좋고 더 강건한 모델을 개발할 수도 있음을 확인
   - best model에 쓰인 hyperparamter를 포함하여, 동일한 hyperparameter로 SalesPoint를 제외하고 학습시켰을 때 성능이 더 좋고 더 강건한 경우가 있는 것을 확인.
-- 간단한 모델로 리버스 엔지니어링을 진행하여, 알라딘 중고도서 가격 산정 시스템이 많이 복잡하지는 않을 것이라 유추할 수 있었음
-  - 기본적인 전처리만 진행한 상황에서, 모델이 처음 보는 종류의 데이터에 대해서도 XGBoost 만으로도 충분히 좋은 성능이 나올 수 있었음
+- 간단한 모델로 리버스 엔지니어링을 진행하여, 알라딘 중고매장 도서 가격 산정 시스템이 많이 복잡하지는 않을 것이라 유추할 수 있었음
 - 연산량의 관점에서 grid search는 hyperparameter 탐색에 매우 비효율적
-  - 모델에 맞게 hyperparameter의 탐색 순서를 설정하거나, Bayesian search 등을 활용하면 연산에 드는 자원 및 시간을 보다 효율적으로 사용할 수 있었을 것이라 기대
-- 몇 십만 개 단위의 데이터를 XGBoost에 적용하고자 하면, Sci-kit API 보다 Python API를 이용하면 연산 속도가 더 빠를 수 있고, 특히 cupy를 통해 gpu를 사용하면 더욱 빠르게 할 수 있음
+  - 모델에 맞게 hyperparameter의 탐색 순서를 설정하거나, Bayesian search 등을 활용하면 연산에 드는 자원 등을 효율적으로 사용할 수 있었을 것이라 기대
+- 몇 십만 개 단위의 데이터를 XGBoost로 다룰 땐, Sci-kit API 보다 Python API를 이용하고, 특히 cupy를 통해 gpu를 사용하면 연산속도를 빠르게 할 수 있음
 
 ### 2. [Encoder only transformer 기반 도서 정가 예측 모델 개발 및 initial learning rate와 best epoch의 분포 사이 관계 조사](https://github.com/doeun-235/aladin_book_price)
 
@@ -133,8 +131,8 @@
   *<b>도표.</b> test set의 정가, encoder based model의 오차 및 상대오차 histogram. 셋 모두 가독성을 위해 plot에서 X축의 범위를 제한하여, 최댓값 및 최솟값은 X축의 범위 바깥에 있을 수 있음*
 
 - ReduceLROnPlateau scheduler를 사용할 때 *init_lr*에 따른 *best_epoch*의 분포를 보기 위해 7개 *init_lr*에 대해 총 200번의 학습 진행
-- *best_epoch*의 분포와 *init_lr* 사이 관계식을 결정하기엔 부족하지만, 추가적인 조사를 했을 때 유의미한 결과가 나올 가능성을 시사하는 결과가 나옴
-  - 최대 epoch 제한에 크게 영향 받지 않은 6개의 *init_lr*에 대해, *best_epoch*<sup>*d*</sup>의 median 회귀 시 R2 Score 0.96 초과하고, 해당 모델로 *best_epoch*의 median을 회귀했을 때 RMSE 10 미만인 선형회귀 모델을 $-0.75\leq d \leq 0.75, d\neq0$의 $d$에 대해 모두 찾을 수 있음
+- *best_epoch*의 분포와 *init_lr* 사이 관계식을 결정하기엔 부족하지만, 추가적인 조사를 했을 때 유의미한 결과가 나올 가능성을 시사하는 결과
+  - 6개의 *init_lr*에 대해, *best_epoch*<sup>*d*</sup>의 median 회귀 시 R2 Score 0.96 초과하고, 해당 모델로 *best_epoch*의 median을 회귀했을 때 RMSE 10 미만인 선형회귀 모델을 $-0.75\leq d \leq 0.75, d\neq0$ 구간의 $d$에 대해 모두 찾을 수 있음
   - 임의의 숫자들로 유사한 조건에서 시뮬레이션(Monte Carlo Method) 했을때, 비슷한 수준의 성적이 나올 통계적 확률은 0.054 정도
   - 나머지 하나의 *init_lr*에서의 *best_epoch*의 median을 오차 8 미만으로 예측
 
@@ -149,9 +147,9 @@
 #### 배운 점
 
 - 실험을 본격적으로 진행하기 전에 sample test를 더 구체적으로 진행하고 적극적으로 조사했으면, 더 의미있는 방향으로 프로젝트를 진행할 수 있지 않았을까 싶음
-  - 고정된 *init_lr*에 대해서 *best_epoch*의 편차가 크게 분포해 있는 것을 근거로, median 값 등 대표값을 추정하는 것으로 방향을 빠르게 정했으면, 계산자원을 더 경제적으로 사용할 수 있었을 것 같음
+  - 고정된 *init_lr*에 대해서 *best_epoch*의 median 값 등 대표값을 추정하는 것으로 방향을 빠르게 정했으면, 계산자원을 더 경제적으로 사용할 수 있었을 것 같음
   - median값을 사용했을 때 <i>best_epoch<sup>-0.5</sup></i>에 대한 선형회귀 모델을 찾을 수 있는 것을 확인했었음
-  - 하지만 기존 논문에서와 다른 scheduler를 사용했기 때문에, $d$를 한 숫자로 정하려면 추가적인 근거가 많이 필요함을 뒤늦게 알아챔
+  - 하지만 기존 논문에서와 다른 scheduler를 사용했기 때문에, $d$를 특정하려면 추가적인 근거가 많이 필요함을 뒤늦게 알았음
 - 발생한 상황이 어느 정도 희귀한지 판단하는데, Monte Carlo Method으로 구한 통계적 확률이 도움을 줄 수 있음
 - 데이터가 y값에 대해 매우 균질하지 않게 분포할 경우, 모델 별로 MAPE와 R2 Score에서 상반된 결과를 갖기도 하는 것을 확인
 - 80%이상의 데이터에서 절대오차가 6000 미만임에도 나머지 데이터에서 절대 오차가 매우 크면 전체 RMSE는 8000을 넘어갈 수 있는 것을 체감
@@ -195,10 +193,11 @@
 
 ### 배운 점
 
-- 회귀 예측을 평가할 때, 평균 오차에 관한 score와 r2 score를 복합적으로 이용해야 함을 익힘.
+- 회귀 예측을 평가할 때, 평균 오차에 관한 score(RMSE,MAPE 등)와 r2 score를 복합적으로 이용해야 함을 익힘.
+<!--
   - r2 score가 좋을수록 x에서의 차이가 y값 예측에 잘 반영되고 있고, 평균 오차에 관한 score(RMSE, MAPE 등)가 좋을수록 실제값과 오차가 적은 것을 데이터를 통해 직접적으로 볼 수 있었음.
-  - 일반적으로 평균 오차에 관한 score가 좋을 수록 r2 score도 좋았으나, 항상 그런 것은 아니었음.
-- 데이터 셋 특성에 따라, k-NN을 적용하여 결측 보간을 하는 것이 유효할 수 있음.
+  - 일반적으로 평균 오차에 관한 score가 좋을 수록 r2 score도 좋았으나, 항상 그런 것은 아니었음. -->
+- 데이터셋에 따라, k-NN을 적용하여 결측 보간을 하는 것이 유효할 수 있음.
   - 다만, 다른 보간 방법 혹은 데이터를 drop하는 것에 비해 항상 압도적으로 좋지는 않음.
     - 평균 오차에 관련된 score는 대개 좋아졌지만, r2 score는 나빠지는 경우들이 있었음.
   - 도메인 지식을 바탕으로 custom metric을 설계하는 것이 유효할 수 있음.
@@ -206,8 +205,9 @@
     - 약 4천 ~ 5천 여개의 데이터를 이용해 3천 ~ 2천 여개의 데이터를 예측하는데 분 단위의 시간이 걸림.
 - c를 이용할 수 있도록 리팩토링하여, Jit을 적용시킬 경우 속도가 비약적으로 빨라짐.
   - custom metric에 Jit을 적용하자, 분 단위에서 초 단위로 빨라짐.
+<!--
   - input이 함수에서 처리될 때 중간값으로 문자를 경유하면 안됨.
-  - dict 자료형을 사용하면 안되고, array를 사용해야 함.
+  - dict 자료형을 사용하면 안되고, array를 사용해야 함. -->
 - baseline을 잡기 위해 XGBoost 등의 machine learning을 사용하는 것이 개발 속도 등의 측면에서 매우 유용할 수 있음.
 
 ## [Cucker-Smale 모델 및 그 확장에 대한 시뮬레이션](https://github.com/doeun-235/Cucker-Smale-Model)
