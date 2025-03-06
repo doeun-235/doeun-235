@@ -78,15 +78,15 @@
 
   ![h5_fi](./imgs/h5_fi.png)
 
-  <i><b>도표</b>. best model의 feature importance</i>
+  <i><b>도표.1</b> best model의 feature importance</i>
 
   ||RMSE|R2 score|N|
   |:--:|--:|--:|--:|
-  |test 1|610.7|0.973|156,843|
-  |test 2|1,440|0.914|5,968|
-  |harmonic mean|857.8|0.943||
+  |**test 1**|610.7|0.973|156,843|
+  |**test 2**|1,440|0.914|5,968|
+  <!--|harmonic mean|857.8|0.943||-->
 
-  <i><b>도표</b>. test별 데이터셋의 크기 및 XGBoost Regressor에서의 최고 성적</i>
+  <i><b>도표.2</b> test별 데이터셋의 크기 및 XGBoost Regressor에서의 최고 성적</i>
 
 #### 기여
 
@@ -124,11 +124,11 @@
   |MAPE    |    0.359422 |    0.30136 |    0.36642  |    0.39802  |
   |R2 SCORE|    0.4744   |    0.37666 |    0.31123  |    0.23795  |
 
-  *<b>도표.</b> 각 실험 별 best model과 성능*
+  *<b>도표.3</b> 각 실험 별 best model과 성능*
 
   ![best_dist](./imgs/rslt_dist.png)
 
-  *<b>도표.</b> test set의 정가, encoder based model의 오차 및 상대오차 histogram. 셋 모두 가독성을 위해 plot에서 X축의 범위를 제한하여, 최댓값 및 최솟값은 X축의 범위 바깥에 있을 수 있음*
+  *<b>도표.4</b> test set의 정가, encoder based model의 오차 및 상대오차 histogram. 셋 모두 가독성을 위해 plot에서 X축의 범위를 제한하여, 최댓값 및 최솟값은 X축의 범위 바깥에 있을 수 있음*
 
 - ReduceLROnPlateau scheduler를 사용할 때 *init_lr*에 따른 *best_epoch*의 분포를 보기 위해 7개 *init_lr*에 대해 총 200번의 학습 진행
 - *best_epoch*의 분포와 *init_lr* 사이 관계식을 결정하기엔 부족하지만, 추가적인 조사를 했을 때 유의미한 결과가 나올 가능성을 시사하는 결과
@@ -138,7 +138,7 @@
 
 ![regrslt1](./imgs/reg_rslts_plot0.png)
 
-*<b>도표.</b> init_lr 별 best_epoch의 산포도 및 회귀선. reg_whole : 전체 데이터로 회귀, reg_median : best_epoch의 median에 대한 회귀, reg_mean : best_epoch의 mean에 대한 회귀*
+*<b>도표.5</b> init_lr 별 best_epoch의 산포도 및 회귀선. reg_whole : 전체 데이터로 회귀, reg_median : best_epoch의 median에 대한 회귀, reg_mean : best_epoch의 mean에 대한 회귀*
 
 #### 기여
 
@@ -181,10 +181,11 @@
 | All Cancer Deaths|Adult Physical Inactivity, Diabetes, Teen Obesity, Adult Obesity, Population : Seniors, Income : Poverty in All Ages, e.t.c.|
 | Colorectal Cancer Deaths|Teen Obesity, Adult Obesity, Health Insurance : Uninsured in All Ages, Births : Low Birthweight, Dietary Quality : Teen Soda, e.t.c.|
 
-<center><i><b>도표.</b> 각 예측 목표 항목 별로 설정된 참고 항목 후보의 예시</i></center>
+<center><i><b>도표.6</b> 각 예측 목표 항목 별로 설정된 참고 항목 후보의 예시</i></center>
 
 ![결과비교](./imgs/6-2.rslt2.png)
-<center><i><b>도표.</b> k-NN, k-NN 전처리를 사용한 XGBoost, 사용하지 않은 XGBoost 간의 성능 비교</i></center>
+
+<center><i><b>도표.7</b> k-NN, k-NN 전처리를 사용한 XGBoost, 사용하지 않은 XGBoost 간의 성능 비교</i></center>
 
 ### 기여
 
@@ -226,10 +227,10 @@
   - **기여** : 모델 제안, 해의 존재성 및 수렴성 증명, 수치적 시뮬레이션 구현, 진행 및 이론에 부합되는지 검토 등에 기여
 
 ![이론시각화](./imgs/graph_ein-3.png)
-<center><i><b>도표.</b> 변수 별 기대값 간의 부등식이 이론에 맞게 성립함을 보인 예시 </i></center>
+<center><i><b>도표.8</b> 변수 별 기대값 간의 부등식이 이론에 맞게 성립함을 보인 예시 </i></center>
 
 ![시뮬레이션](./imgs/scs-em.v.1.8-simu-einstein.gif)
-<center><i><b>도표.</b> 이론에 맞게 설계대로 운동이 동기화 됨을 보인 예시 </i></center>
+<center><i><b>도표.9</b> 이론에 맞게 설계대로 운동이 동기화 됨을 보인 예시 </i></center>
 
 # 경력
 
