@@ -1,4 +1,4 @@
-**KOR** · [ENG](./README_EN.md)
+<!-- **KOR** · [ENG](./README_EN.md)-->
 
 ---
 
@@ -6,7 +6,7 @@
 
 ## Tech Stack
 
-- NumPy, Pandas, Keras, Torch, Scikit-learn, Matplotlib, MySql
+- NumPy, Pandas, Matplotlib, Scikit-learn, Keras, Torch, MySql
 <!--
 ![c](https://img.shields.io/badge/C-a8b9cc?style=flat-square&logo=c&logoColor=black) ![python](https://img.shields.io/badge/Python-3776ab?style=flat-square&logo=python&logoColor=white) ![jupyter](https://img.shields.io/badge/Jupyter-f37626?style=flat-square&logo=jupyter&logoColor=white) ![mysql](https://img.shields.io/badge/mysql-4479A1?style=flat-square&logo=mysql&logoColor=white) ![matlab](https://img.shields.io/badge/MATLAB-0076a8?style=flat-square&logo=mathworks&logoColor=white)
 
@@ -112,7 +112,7 @@
 #### 개요
 
 - 24.10.23 - 24.11.19, 25.01.04 - 25.02.26
-- **Libraries** : PyTorch, NumPy, Pandas, Matplotlib, re, Scikit-learn, xgboost, [Mecab](https://pypi.org/project/python-mecab-ko/)
+- **Libraries** : PyTorch, Scikit-learn, xgboost, NumPy, Pandas, Matplotlib, re, [Mecab](https://pypi.org/project/python-mecab-ko/)
 - 위에서 구축한 알라딘 베스트셀러 데이터셋을 사용하여, 저자, 책이름, 출간날짜 등의 정보로 정가를 예측
 - encoder only transformer 기반 모델을 개발한 뒤, 성적을 평가하고 initial learning rate(이하 *init_lr*)와 *best_epoch*의 분포 사이 관계 조사
 - 성적 : RMSE, R2 Score에서 Random Forest나 XGBoost 등 보다 좋은 성적을 기록
