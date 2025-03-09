@@ -130,7 +130,7 @@
   *<b>도표.4</b> test set의 정가, encoder based model의 오차 및 상대오차 histogram. 셋 모두 가독성을 위해 plot에서 X축의 범위를 제한하여, 최댓값 및 최솟값은 X축의 범위 바깥에 있을 수 있음*
 
 - ReduceLROnPlateau scheduler를 사용할 때 *init_lr*에 따른 *best_epoch*의 분포를 보기 위해 7개 *init_lr*에 대해 총 200번의 학습 진행
-- *best_epoch*의 분포와 *init_lr* 사이 관계식을 결정하기엔 부족하지만, 추가적인 조사를 했을 때 유의미한 결과가 나올 가능성을 시사하는 결과
+- *best_epoch*의 분포와 *init_lr* 사이 관계식을 결정하기엔 부족하지만, 추가적인 조사를 했을 때 유의미한 결과가 나올 가능성을 시사함
   - 6개의 *init_lr*에 대해, *best_epoch*<sup>*d*</sup>의 median 회귀 시 R2 Score 0.96 초과하고, 해당 모델로 *best_epoch*의 median을 회귀했을 때 RMSE 10 미만인 선형회귀 모델을 $-0.75\leq d \leq 0.75, d\neq0$ 구간의 $d$에 대해 모두 찾을 수 있음
   - 임의의 숫자들로 유사한 조건에서 시뮬레이션(Monte Carlo Method) 했을때, 비슷한 수준의 성적이 나올 통계적 확률은 0.054 정도
   - 나머지 하나의 *init_lr*에서의 *best_epoch*의 median을 오차 8 미만으로 예측
@@ -152,7 +152,6 @@
 - 발생한 상황이 어느 정도 희귀한지 판단하는데, Monte Carlo Method으로 구한 통계적 확률이 도움을 줄 수 있음
 - 데이터가 y값에 대해 매우 균질하지 않게 분포할 경우, 모델 별로 MAPE와 R2 Score에서 상반된 결과를 갖기도 하는 것을 확인
 - 80%이상의 데이터에서 절대오차가 6000 미만임에도 나머지 데이터에서 절대 오차가 매우 크면 전체 RMSE는 8000을 넘어갈 수 있는 것을 체감
-- transformer 관련 모델에서 *init_lr*은 scale이 비슷하면, ReduceLROnPlateau scheduler를 사용했을 때, 성적이 의미있게 큰 차이가 나지는 않을 수 있는 것을 봄
 
 ## [미국 대도시 보건 데이터셋을 기반으로 한 질병 발병 및 사망 통계 예측 AI 모델](https://github.com/WASSUP-AIModel-3rd-Project1/Project-1)
 
