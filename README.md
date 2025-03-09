@@ -214,7 +214,7 @@
 - Cucker-Smale 모델은 비선형 ODE system으로, 운동하는 물체들이 상대속도 정보를 주고 받음으로써 같은 속도로 동기화 되어 수렴할 수 있는 모델.
 - Cucker-Smale 모델 및 그 확장들의 수치적 해를 구하는 시뮬레이션을 진행.
   - NumPy를 이용해 ODE의 수치적 해를 구하는 알고리즘(Runge-Kutta 4th order) 및 SDE의 수치적 해를 구하는 알고리즘(Improved Euler-Maruyama Method)를 구현함.
-  - Matplotlib을 이용해 이론과 시뮬레이션이 부합함을 시각화하고, 설계에 맞게 운동이 동기화 되는 것을 확인하기 위한 시연 영상 제작.
+  - Matplotlib을 이용해 이론과 시뮬레이션이 부합함을 시각화하고, 설계에 맞게 운동이 동기화 되는 것을 확인하기 위한 시연 애니메이션 제작.
 - **석사 학위 논문** : ["Flocking Behavior in Stochastic Cucker-Smale Model with Formation Control on Symmetric Digraphs"](http://www.riss.kr/search/detail/DetailView.do?p_mat_type=be54d9b8bc7cdb09&control_no=c40c7fb1b28114ebffe0bdc3ef48d419)  (개명 전 이름으로 표기됨)
   - 운동하는 물체들이 의도된 모양의 군집을 이루도록 동기화 시킬 수 있는 상호작용의 예시가 될 수 있는 모델을 제시.
   - 상대위치 및 상대속도에 대한 함수로 표현되는 힘을 노이즈가 섞인 형태로 물체들 간에 주고받는 시스템.
